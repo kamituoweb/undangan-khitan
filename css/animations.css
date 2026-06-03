@@ -1,0 +1,40 @@
+/* Animation Base */
+.scroll-anim {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.scroll-anim.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-anim.from-right {
+    transform: translateX(50px);
+}
+
+.scroll-anim.from-right.show {
+    transform: translateX(0);
+}
+
+.delay-100 {
+    transition-delay: 100ms !important;
+}
+
+.delay-200 {
+    transition-delay: 200ms !important;
+}
+
+.delay-300 {
+    transition-delay: 300ms !important;
+}
+
+.delay-400 {
+    transition-delay: 400ms !important;
+}
+
+.delay-500 {
+    transition-delay: 500ms !important;
+}
