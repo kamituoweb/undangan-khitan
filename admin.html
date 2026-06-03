@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Pengaturan Khitanan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: #2980b9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-success {
+            background: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background: #27ae60;
+        }
+
+        .output-box {
+            margin-top: 30px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            display: none;
+        }
+
+        .guest-link-section {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Panel Pengaturan Undangan Khitan</h1>
+        <p>Gunakan form ini untuk mengubah isi data undangan Khitan. Copy dan Paste hasilnya ke `js/config.js`.</p>
+
+        <form id="config-form">
+            <!-- Theme Settings -->
+            <h2>0. Pengaturan Tema & Latar</h2>
+            <div class="form-group">
+                <label>Gambar / Warna Latar Utama Konten (contoh: #f8fbff atau Link Gambar Google Drive)</label>
+                <input type="text" id="theme-bg-primary" value="#f8fbff">
+            </div>
+            <div class="form-group">
+                <label>Gambar / Warna Latar Sekunder Konten (contoh: #f0f7fc atau Link Gambar Google Drive)</label>
+                <input type="text" id="theme-bg-secondary" value="#f0f7fc">
+            </div>
+            <div class="form-group">
+                <label>Logo Footer (Link Gambar Google Drive)</label>
+                <input type="text" id="theme-footer-logo" value="">
+            </div>
+
+            <!-- Cover -->
+            <h2>1. Sampul Cerita & Musik</h2>
+            <div class="form-group"><label>Judul Cover (Contoh: WALIMATUL KHITAN)</label><input type="text"
+                    id="cover-title" value="WALIMATUL KHITAN"></div>
+            <div class="form-group"><label>Nama Anak di Cover</label><input type="text" id="cover-child"
+                    value="Rizky Agung"></div>
+            <div class="form-group"><label>Latar Belakang Gambar</label><input type="url" id="cover-bg"
+                    value="https://placehold.co/1080x1920/2c3e50/fff?text=Latar+Belakang+Khitan"></div>
+            <div class="form-group"><label>Lagu Latar (.mp3)</label><input type="url" id="cover-music"
+                    value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></div>
+
+            <!-- Profile -->
+            <h2>2. Profil Anak</h2>
+            <div class="form-group"><label>Teks Pengantar</label><textarea id="prof-intro"
+                    rows="2">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan syukuran Khitanan putra kami.</textarea>
+            </div>
+            <div class="form-group"><label>Nama Lengkap Anak</label><input type="text" id="prof-name"
+                    value="Rizky Agung Subagja"></div>
+            <div class="form-group"><label>Informasi Orang Tua</label><input type="text" id="prof-parents"
+                    value="Putra Pertama dari Bpk. Surya & Ibu Kartini"></div>
+            <div class="form-group"><label>Foto Profil Anak (URL)</label><input type="url" id="prof-photo"
+                    value="https://placehold.co/300x300/3498db/fff?text=Foto+Anak"></div>
+
+            <!-- Event -->
+            <h2>3. Jadwal Syukuran Khitan</h2>
+            <div class="form-group"><label>Judul Sesi (Contoh: Tasyakuran Khitan)</label><input type="text"
+                    id="event-title" value="Tasyakuran Khitan"></div>
+            <div class="form-group"><label>Waktu Countdown (YYYY-MM-DDTHH:mm:ss)</label><input type="datetime-local"
+                    id="event-target" value="2026-12-12T09:00"></div>
+            <div class="form-group"><label>Tanggal Acara</label><input type="text" id="event-date"
+                    value="Minggu, 12 Desember 2026"></div>
+            <div class="form-group"><label>Waktu Pelaksanaan</label><input type="text" id="event-time"
+                    value="09:00 WIB - Selesai"></div>
+            <div class="form-group"><label>Lokasi (Baris baru pakai &lt;br&gt;)</label><textarea id="event-loc"
+                    rows="2">Kediaman Kami<br>Jl. Damai Sejahtera No. 1, Jakarta</textarea></div>
+            <div class="form-group"><label>Link Google Maps</label><input type="url" id="event-map"
+                    value="https://maps.google.com"></div>
+
+            <!-- Gallery -->
+            <h2>4. Galeri Foto</h2>
+            <div class="form-group"><label>URL Foto 1</label><input type="url" id="gal-1"
+                    value="https://placehold.co/400x400/ccc/333?text=Foto+1"></div>
+            <div class="form-group"><label>URL Foto 2</label><input type="url" id="gal-2"
+                    value="https://placehold.co/400x400/ccc/333?text=Foto+2"></div>
+            <div class="form-group"><label>URL Foto 3</label><input type="url" id="gal-3"
+                    value="https://placehold.co/400x400/ccc/333?text=Foto+3"></div>
+
+            <!-- Gift -->
+            <h2>5. Amplop Digital (Hadiah)</h2>
+            <div class="form-group"><label>Nama Bank Pembayaran Utama</label><input type="text" id="bank-1" value="BCA">
+            </div>
+            <div class="form-group"><label>Nomor Rekening</label><input type="text" id="acc-num-1" value="1234567890">
+            </div>
+            <div class="form-group"><label>Atas Nama (a.n.)</label><input type="text" id="acc-name-1"
+                    value="a.n. Surya"></div>
+
+            <!-- Penutup -->
+            <h2>6. Penutup (Closing Text)</h2>
+            <div class="form-group"><label>Teks Tambahan di Bawah RSVP (opsional, baris baru pakai
+                    &lt;br&gt;)</label><textarea id="closing-text"
+                    rows="3">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu.</textarea>
+            </div>
+
+            <button type="button" class="btn btn-success" id="generate-btn">Generate Kode config.js</button>
+        </form>
+
+        <div id="output-area" class="output-box"></div>
+        <button type="button" class="btn hidden" id="copy-btn" style="display:none;">Salin Kode</button>
+
+        <hr style="margin: 40px 0;">
+
+        <!-- Guest Link Generator -->
+        <div class="guest-link-section">
+            <h2>Buat Link Undangan (Link Generator)</h2>
+            <p style="margin-bottom: 15px; color: #555;">Masukkan daftar nama tamu (satu baris untuk satu nama) untuk
+                menghasilkan link unik secara instan.</p>
+            <div class="form-group">
+                <label>Daftar Nama Tamu</label>
+                <textarea id="guest-input-name" rows="5"
+                    placeholder="Budi Santoso&#10;Keluarga Andi&#10;Siska & Wafa"></textarea>
+            </div>
+            <button class="btn" id="generate-link-btn" style="background:#8e44ad;">Generate Semua Link</button>
+            <div class="form-group" style="margin-top:20px;">
+                <label>Hasil Link</label>
+                <textarea id="guest-result-link" rows="8" readonly style="background:#e0e0e0;"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="./js/admin.js"></script>
+</body>
+
+</html>
